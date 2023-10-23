@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+#small-image {
+  max-width: 5vw;
+}
+
+li {
+  list-style: none;
+}
+
+.article-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 1rem;
+  padding: 1rem;
+  width: 50vw;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+    color: black;
+  }
+}
