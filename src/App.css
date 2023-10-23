@@ -48,3 +48,11 @@ li {
     color: black;
   }
 }
+
+.comment-list {
+  justify-content: left;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+}

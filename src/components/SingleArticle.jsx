@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
 import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 export default function SingleArticle() {
   const { article_id } = useParams();
@@ -34,9 +35,11 @@ export default function SingleArticle() {
       <p>{body}</p>
       <p>Topic: {topic}</p>
       by {author}
-      <p>
-        Comments: {comment_count} | Votes: {votes}
-      </p>
+      <Link to={`/articles/${article_id}/comments`}>
+        <p>
+          Comments: {comment_count} | Votes: {votes}
+        </p>
+      </Link>
     </>
   );
 }

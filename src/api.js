@@ -25,3 +25,9 @@ export const getTopics = () => {
     })
 }
 
+export const getComments = (article_id) => {
+    return newsApi.get(`/articles/${article_id}/comments`)
+    .then((res)=>{
+        return res.data.comments
+    })
+}
