@@ -2,6 +2,7 @@ import ArticleCard from "./ArticleCard";
 import { getArticles } from "../api";
 import Loading from "./Loading";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Articles() {
   const [allArticles, setAllArticles] = useState([]);
@@ -27,12 +28,14 @@ export default function Articles() {
           ({ article_id, author, title, topic, comment_count }) => {
             return (
               <li className="article-card" key={article_id}>
-                <ArticleCard
-                  author={author}
-                  title={title}
-                  topic={topic}
-                  comments={comment_count}
-                />
+                <Link to={`/articles/${article_id}`}>
+                  <ArticleCard
+                    author={author}
+                    title={title}
+                    topic={topic}
+                    comments={comment_count}
+                  />
+                </Link>
               </li>
             );
           }
