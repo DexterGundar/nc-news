@@ -9,6 +9,14 @@ export const getArticles = () => {
         return res.data.articles
     })
 }
+export const getArticleById = (article_id) =>{
+    return newsApi.get(`/articles/${article_id}`)
+    .then(({data}) =>{
+        
+        return data.article;
+    })
+}
+
 
 export const getTopics = () => {
     return newsApi.get('/topics')
@@ -16,3 +24,4 @@ export const getTopics = () => {
         return res.data.topics
     })
 }
+
