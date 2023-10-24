@@ -1,4 +1,4 @@
-import { getArticleById } from "../api";
+import { getArticleById, patchArticleVotes } from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
@@ -7,6 +7,9 @@ export default function SingleArticleForComments() {
   const { article_id } = useParams();
   const [articleForComments, setArticleForComments] = useState({});
   const [loading, setLoading] = useState(true);
+  const [userLikes, setUserLikes] = useState(0);
+  const [isVoting, setIsVoting] = useState();
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
     getArticleById(article_id)
@@ -19,9 +22,22 @@ export default function SingleArticleForComments() {
       });
   }, [article_id]);
 
-  const { title, author, topic, body, article_img_url } = articleForComments;
+  const { title, author, topic, body, article_img_url, votes } =
+    articleForComments;
+
+  function handleAddVote(value) {
+    setUserLikes((currentLikes) => {
+      return currentLikes + value;
+    });
+
+    patchArticleVotes(article_id, value).catch(() => {
+      setUserLikes(0);
+      setIsError(true);
+    });
+  }
 
   if (loading) return <Loading />;
+
   return (
     <>
       <h2>{title}</h2>
@@ -31,8 +47,21 @@ export default function SingleArticleForComments() {
         id="medium-image"
       />
       <p>{body}</p>
+      {!isError ? (
+        <button
+          disabled={userLikes === 1}
+          onClick={() => {
+            handleAddVote(1);
+          }}
+        >
+          I like this article
+        </button>
+      ) : (
+        <p>voting not available</p>
+      )}
       <p>Topic: {topic}</p>
       by {author}
+      <p>Votes: {votes + userLikes}</p>
     </>
   );
 }
