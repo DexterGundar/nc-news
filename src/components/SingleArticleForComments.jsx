@@ -1,18 +1,17 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Loading from "./Loading";
-import { Link } from "react-router-dom";
 
-export default function SingleArticle() {
+export default function SingleArticleForComments() {
   const { article_id } = useParams();
-  const [article, setArticle] = useState({});
+  const [articleForComments, setArticleForComments] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getArticleById(article_id)
       .then((article) => {
-        setArticle(article);
+        setArticleForComments(article);
         setLoading(false);
       })
       .catch((err) => {
@@ -20,8 +19,7 @@ export default function SingleArticle() {
       });
   }, [article_id]);
 
-  const { title, author, topic, body, article_img_url, comment_count, votes } =
-    article;
+  const { title, author, topic, body, article_img_url } = articleForComments;
 
   if (loading) return <Loading />;
   return (
@@ -35,11 +33,6 @@ export default function SingleArticle() {
       <p>{body}</p>
       <p>Topic: {topic}</p>
       by {author}
-      <Link to={`/articles/${article_id}/comments`}>
-        <p>
-          Comments: {comment_count} | Votes: {votes}
-        </p>
-      </Link>
     </>
   );
 }
