@@ -7,20 +7,38 @@ import Topics from "./components/Topics";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import CommentList from "./components/CommentList";
+import { useContext } from "react";
+import { UserContext } from "./UserContext";
+import SelectUser from "./components/SelectUser";
 
 function App() {
+  const { currentUser } = useContext(UserContext);
   return (
     <>
       <Header />
       <Nav />
+
       <Routes>
-        <Route path="/topics" element={<Topics />} />
-        <Route path="/" element={<Articles />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
-        <Route
-          path="/articles/:article_id/comments"
-          element={<CommentList />}
-        />
+        {currentUser ? (
+          <>
+            <Route path="/" element={<Articles />} />
+            <Route path="/*" element={<SelectUser />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/topics" element={<Topics />} />
+            <Route path="/articles/:article_id" element={<SingleArticle />} />
+            <Route
+              path="/articles/:article_id/comments"
+              element={<CommentList />}
+            />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Articles />} />
+            <Route path="/*" element={<SelectUser />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/articles/:article_id" element={<SingleArticle />} />
+          </>
+        )}
       </Routes>
     </>
   );

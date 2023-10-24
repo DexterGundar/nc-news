@@ -17,6 +17,17 @@ export const getArticleById = (article_id) =>{
     })
 }
 
+export const patchArticleVotes = (article_id, votesToPatch) => {
+    const voteUpdate = { inc_votes: votesToPatch };
+    return newsApi.patch(`/articles/${article_id}`, voteUpdate)
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+            console.log(error);
+})
+}
+
 
 export const getTopics = () => {
     return newsApi.get('/topics')
@@ -29,5 +40,14 @@ export const getComments = (article_id) => {
     return newsApi.get(`/articles/${article_id}/comments`)
     .then((res)=>{
         return res.data.comments
+    })
+}
+
+export const getUsers = () => {
+    return newsApi.get('/users', {params: {
+        sort_by: 'username'
+    }})
+    .then((res) => {
+        return res.data.users
     })
 }

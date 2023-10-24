@@ -37,7 +37,8 @@ export default function SingleArticle() {
       by {author}
       <Link to={`/articles/${article_id}/comments`}>
         <p>
-          Comments: {comment_count} | Votes: {votes}
+          Click to login for voting and comments: Comments: {comment_count} |
+          Votes: {votes}
         </p>
       </Link>
     </>
