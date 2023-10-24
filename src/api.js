@@ -12,7 +12,6 @@ export const getArticles = () => {
 export const getArticleById = (article_id) =>{
     return newsApi.get(`/articles/${article_id}`)
     .then(({data}) =>{
-        
         return data.article;
     })
 }
@@ -21,10 +20,10 @@ export const patchArticleVotes = (article_id, votesToPatch) => {
     const voteUpdate = { inc_votes: votesToPatch };
     return newsApi.patch(`/articles/${article_id}`, voteUpdate)
     .then(function (response) {
-        console.log(response);
+        return response.data;
     })
     .catch(function (error) {
-            console.log(error);
+        return Promise.reject(error);
 })
 }
 
