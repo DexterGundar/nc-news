@@ -3,6 +3,7 @@ import CommentCard from "./CommentCard";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import { useEffect, useState, Fragment } from "react";
+import SingleArticleForComments from "./SingleArticleForComments";
 
 export default function CommentList() {
   const { article_id } = useParams();
@@ -16,7 +17,7 @@ export default function CommentList() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setLoading(false);
       });
   }, []);
 
@@ -24,6 +25,7 @@ export default function CommentList() {
 
   return (
     <>
+      <SingleArticleForComments />
       <h2>Comments</h2>
       <ul className="comment-list">
         {allComments.map(
