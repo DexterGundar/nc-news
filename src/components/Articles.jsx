@@ -2,9 +2,10 @@ import ArticleCard from "./ArticleCard";
 import { getArticles } from "../api";
 import Loading from "./Loading";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Articles() {
+  const { article_id } = useParams();
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
