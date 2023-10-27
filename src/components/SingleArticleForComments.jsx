@@ -2,13 +2,13 @@ import { getArticleById, patchArticleVotes } from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
+import AddComment from "./AddComment";
 
 export default function SingleArticleForComments() {
   const { article_id } = useParams();
   const [articleForComments, setArticleForComments] = useState({});
   const [loading, setLoading] = useState(true);
   const [userLikes, setUserLikes] = useState(0);
-  const [isVoting, setIsVoting] = useState();
   const [isError, setIsError] = useState(null);
 
   useEffect(() => {
@@ -26,13 +26,12 @@ export default function SingleArticleForComments() {
     articleForComments;
 
   function handleAddVote(value) {
-    setUserLikes((currentLikes) => {
-      return currentLikes + value;
-    });
-
     patchArticleVotes(article_id, value).catch(() => {
       setUserLikes(0);
       setIsError(true);
+    });
+    setUserLikes((currentLikes) => {
+      return currentLikes + value;
     });
   }
 
@@ -62,6 +61,7 @@ export default function SingleArticleForComments() {
       <p>Topic: {topic}</p>
       by {author}
       <p>Votes: {votes + userLikes}</p>
+      <AddComment article_id={article_id} />
     </>
   );
 }

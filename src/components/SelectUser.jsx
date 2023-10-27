@@ -32,9 +32,9 @@ export default function SelectUser() {
         {users.map(({ username, name, avatar_url }) => {
           return (
             <li key={username}>
-              <p onClick={() => setCurrentUser(username)}>
+              <p onClick={() => setCurrentUser({ username, name })}>
                 <img id="small-image" src={avatar_url} alt="" />
-                {username}
+                {username} {name}
               </p>
             </li>
           );
