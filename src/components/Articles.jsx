@@ -8,6 +8,7 @@ export default function Articles({ selected_topic }) {
   const { article_id } = useParams();
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortBy, setSortBy] = useState("title");
 
   useEffect(() => {
     getArticles()
@@ -25,7 +26,7 @@ export default function Articles({ selected_topic }) {
       .catch((err) => {
         setLoading(false);
       });
-  }, [selected_topic]);
+  }, []);
 
   if (loading) return <Loading />;
 

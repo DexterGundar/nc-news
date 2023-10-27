@@ -3,8 +3,8 @@ import axios from 'axios'
 const newsApi = axios.create({ baseURL: 'https://news-service-alcf.onrender.com/api'})
 
 // Articles API
-export const getArticles = () => {
-    return newsApi.get('/articles')
+export const getArticles = (sortBy) => {
+    return newsApi.get('/articles',{params:{sort_by:sortBy}})
     .then((res)=>{
         return res.data.articles
     })
@@ -42,6 +42,13 @@ export const postComment = (article_id, commentToPost) => {
     return newsApi.post(`/articles/${article_id}/comments`, commentToPost)
     .then((res) => {
         return res.data;
+    })
+}
+
+export const deleteComment = (comment_id) => {
+    return newsApi.delete(`/comments/${comment_id}`)
+    .then((res) => {
+        return res 
     })
 }
 
