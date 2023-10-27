@@ -4,7 +4,7 @@ import Loading from "./Loading";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-export default function Articles() {
+export default function Articles({ selected_topic }) {
   const { article_id } = useParams();
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,13 +12,20 @@ export default function Articles() {
   useEffect(() => {
     getArticles()
       .then((articles) => {
-        setAllArticles(articles);
+        const filteredArticles =
+          selected_topic !== undefined
+            ? articles.filter((art) => {
+                return art.topic === selected_topic;
+              })
+            : articles;
+
+        setAllArticles(filteredArticles);
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
       });
-  }, []);
+  }, [selected_topic]);
 
   if (loading) return <Loading />;
 
