@@ -52,6 +52,7 @@ export default function AddComment({ article_id, setAllComments }) {
       <form action="" onSubmit={handleSubmit}>
         <label htmlFor="body">Comment: </label>
         <input
+          disabled={commentAdded}
           required
           name="body"
           type="text"

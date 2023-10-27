@@ -11,6 +11,9 @@ import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import SelectUser from "./components/SelectUser";
 import ErrorPage from "./components/ErrorPage";
+import Coding from "./components/Coding";
+import Football from "./components/Football";
+import Cooking from "./components/Cooking";
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -26,6 +29,9 @@ function App() {
             <Route path="/" element={<Articles />} />
             <Route path="/" element={<Home />} />
             <Route path="/topics" element={<Topics />} />
+            <Route path="/coding" element={<Coding />} />
+            <Route path="/football" element={<Football />} />
+            <Route path="/cooking" element={<Cooking />} />
             <Route path="/*" element={<SelectUser />} />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
             <Route
@@ -35,6 +41,9 @@ function App() {
           </>
         ) : (
           <>
+            <Route path="/coding" element={<Coding />} />
+            <Route path="/football" element={<Football />} />
+            <Route path="/cooking" element={<Cooking />} />
             <Route path="/error" element={<ErrorPage />} />
             <Route path="/topics" element={<Topics />} />
             <Route path="/" element={<Articles />} />

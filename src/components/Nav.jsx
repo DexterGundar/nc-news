@@ -8,7 +8,9 @@ export default function Nav() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/topics">Topics</NavLink>
+          <NavLink to="/coding">Coding</NavLink> |{" "}
+          <NavLink to="/football">Football</NavLink> |{" "}
+          <NavLink to="/cooking">Cooking</NavLink>
         </li>
       </ul>
     </nav>
