@@ -19,15 +19,11 @@ export const getArticleById = (article_id) =>{
 export const patchArticleVotes = (article_id, votesToPatch) => {
     const voteUpdate = { inc_votes: votesToPatch };
     return newsApi.patch(`/articles/${article_id}`, voteUpdate)
-    .then(function (response) {
-        return response.data;
+    .then((res) => {
+        return res.data;
     })
-    .catch(function (error) {
-        return Promise.reject(error);
-})
 }
-
-
+// Topics API
 export const getTopics = () => {
     return newsApi.get('/topics')
     .then((res)=>{
@@ -35,13 +31,21 @@ export const getTopics = () => {
     })
 }
 
+// Comments API
 export const getComments = (article_id) => {
     return newsApi.get(`/articles/${article_id}/comments`)
     .then((res)=>{
         return res.data.comments
     })
 }
+export const postComment = (article_id, commentToPost) => {
+    return newsApi.post(`/articles/${article_id}/comments`, commentToPost)
+    .then((res) => {
+        return res.data;
+    })
+}
 
+// Users API
 export const getUsers = () => {
     return newsApi.get('/users', {params: {
         sort_by: 'username'

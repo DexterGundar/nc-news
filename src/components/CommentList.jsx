@@ -19,7 +19,7 @@ export default function CommentList() {
       .catch((err) => {
         setLoading(false);
       });
-  }, []);
+  }, [article_id]);
 
   if (loading) return <Loading />;
 

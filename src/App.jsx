@@ -10,6 +10,7 @@ import CommentList from "./components/CommentList";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import SelectUser from "./components/SelectUser";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -21,10 +22,11 @@ function App() {
       <Routes>
         {currentUser ? (
           <>
+            <Route path="/error" element={<ErrorPage />} />
             <Route path="/" element={<Articles />} />
-            <Route path="/*" element={<SelectUser />} />
             <Route path="/" element={<Home />} />
             <Route path="/topics" element={<Topics />} />
+            <Route path="/*" element={<SelectUser />} />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
             <Route
               path="/articles/:article_id/comments"
@@ -33,6 +35,8 @@ function App() {
           </>
         ) : (
           <>
+            <Route path="/error" element={<ErrorPage />} />
+            <Route path="/topics" element={<Topics />} />
             <Route path="/" element={<Articles />} />
             <Route path="/*" element={<SelectUser />} />
             <Route path="/" element={<Home />} />
