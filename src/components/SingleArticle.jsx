@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { getArticleById } from "../api";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 export default function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
+  const [isError, setIsError] = useState({});
 
   useEffect(() => {
     getArticleById(article_id)
@@ -17,6 +19,7 @@ export default function SingleArticle() {
       })
       .catch((err) => {
         setLoading(false);
+        setIsError({ message: err.message });
       });
   }, [article_id]);
 
@@ -24,6 +27,7 @@ export default function SingleArticle() {
     article;
 
   if (loading) return <Loading />;
+  if (isError.message) return <ErrorPage />;
   return (
     <>
       <h2>{title}</h2>
