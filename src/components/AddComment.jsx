@@ -4,7 +4,7 @@ import { UserContext } from "../UserContext";
 
 import ErrorPage from "./ErrorPage";
 
-export default function AddComment({ article_id }) {
+export default function AddComment({ article_id, setAllComments }) {
   const [isAdding, setIsAdding] = useState(true);
   const { currentUser } = useContext(UserContext);
   const [isError, setIsError] = useState({});
@@ -29,7 +29,9 @@ export default function AddComment({ article_id }) {
     postComment(article_id, newComment)
       .then((data) => {
         setNewAddedComment(data.comment.body);
-
+        setAllComments((currentComments) => {
+          return [data.comment, ...currentComments];
+        });
         setNewComment({
           username: currentUser.username,
           body: "",

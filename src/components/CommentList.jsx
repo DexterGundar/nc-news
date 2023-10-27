@@ -25,13 +25,16 @@ export default function CommentList() {
 
   return (
     <>
-      <SingleArticleForComments />
+      <SingleArticleForComments setAllComments={setAllComments} />
       <h2>Comments</h2>
       <ul className="comment-list">
         {allComments.map(
-          ({ comment_id, body, author, created_at, article_id, votes }) => {
+          (
+            { comment_id, body, author, created_at, article_id, votes },
+            index
+          ) => {
             return (
-              <Fragment key={comment_id}>
+              <Fragment key={index}>
                 <li>
                   <CommentCard
                     body={body}

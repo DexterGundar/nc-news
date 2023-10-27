@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import AddComment from "./AddComment";
 
-export default function SingleArticleForComments() {
+export default function SingleArticleForComments({ setAllComments }) {
   const { article_id } = useParams();
   const [articleForComments, setArticleForComments] = useState({});
   const [loading, setLoading] = useState(true);
@@ -61,7 +61,7 @@ export default function SingleArticleForComments() {
       <p>Topic: {topic}</p>
       by {author}
       <p>Votes: {votes + userLikes}</p>
-      <AddComment article_id={article_id} />
+      <AddComment article_id={article_id} setAllComments={setAllComments} />
     </>
   );
 }
