@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <>
-      <h1>Latest news in the galaxy</h1>
+      <h1>News</h1>
     </>
   );
 }
