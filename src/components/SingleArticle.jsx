@@ -29,7 +29,7 @@ export default function SingleArticle() {
   if (loading) return <Loading />;
   if (isError.message) return <ErrorPage />;
   return (
-    <>
+    <div className="allArticles">
       <h2>{title}</h2>
       <img
         src={article_img_url}
@@ -45,6 +45,6 @@ export default function SingleArticle() {
           Comments: {comment_count} | Votes: {votes}
         </p>
       </Link>
-    </>
+    </div>
   );
 }
