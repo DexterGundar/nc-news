@@ -1,6 +1,5 @@
 import "./App.css";
-import Header from "./components/Header";
-import Home from "./components/Home";
+
 import Nav from "./components/Nav";
 import { Routes, Route } from "react-router-dom";
 import Topics from "./components/Topics";
@@ -19,7 +18,6 @@ function App() {
   const { currentUser } = useContext(UserContext);
   return (
     <>
-      <Header />
       <Nav />
 
       <Routes>
@@ -27,7 +25,7 @@ function App() {
           <>
             <Route path="/error" element={<ErrorPage />} />
             <Route path="/" element={<Articles />} />
-            <Route path="/" element={<Home />} />
+
             <Route path="/topics" element={<Topics />} />
             <Route path="/coding" element={<Coding />} />
             <Route path="/football" element={<Football />} />
@@ -48,7 +46,7 @@ function App() {
             <Route path="/topics" element={<Topics />} />
             <Route path="/" element={<Articles />} />
             <Route path="/*" element={<SelectUser />} />
-            <Route path="/" element={<Home />} />
+
             <Route path="/articles/:article_id" element={<SingleArticle />} />
           </>
         )}

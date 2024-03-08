@@ -31,8 +31,8 @@ export default function Articles({ selected_topic }) {
   if (loading) return <Loading />;
 
   return (
-    <>
-      <ul>
+    <div className="all-of-them">
+      <ul className="article-list">
         {allArticles.map(
           ({ article_id, author, title, topic, comment_count }) => {
             return (
@@ -50,6 +50,6 @@ export default function Articles({ selected_topic }) {
           }
         )}
       </ul>
-    </>
+    </div>
   );
 }
