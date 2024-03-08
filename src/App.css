@@ -5,16 +5,24 @@
   text-align: center;
 }
 
-.Nav {
+.nav {
   position: fixed;
   top: 0;
   left: 0;
-  height: 150px;
+  height: 75px;
   width: 100%;
   color: black;
   background-color: rgb(211, 208, 208);
   z-index: 1;
+  transition-timing-function: ease-in;
+  transition: 0.5s;
 }
+.nav-hidden {
+  visibility: hidden;
+  transition-timing-function: ease-out;
+  transition: 0.5s;
+}
+
 h1 {
   margin: 0;
 }
@@ -34,13 +42,14 @@ h1 {
 }
 
 #small-image {
-  max-width: 5vw;
+  max-width: 15vw;
 }
 #medium-image {
   max-width: 50vw;
 }
 ul {
   padding: 0;
+  margin: 0;
 }
 
 li {

@@ -34,11 +34,19 @@ export default function Articles({ selected_topic }) {
     <div className="all-of-them">
       <ul className="article-list">
         {allArticles.map(
-          ({ article_id, author, title, topic, comment_count }) => {
+          ({
+            article_id,
+            author,
+            article_img_url,
+            title,
+            topic,
+            comment_count,
+          }) => {
             return (
               <li className="article-card" key={article_id}>
                 <Link to={`/articles/${article_id}`}>
                   <ArticleCard
+                    img={article_img_url}
                     author={author}
                     title={title}
                     topic={topic}
