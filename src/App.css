@@ -25,10 +25,6 @@ h1 {
   margin: 0;
 }
 
-/* .loading {
-  margin-top: 150px;
-} */
-
 .card {
   padding: 2em;
 }
@@ -36,14 +32,11 @@ h1 {
 .user-card {
   border: 1px solid #ddd;
   border-radius: 7px;
-  width: 20vw;
+  width: 10vw;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* align-items: center; */
-  text-align: center;
-  margin: 1% auto;
-
+  justify-content: center;
+  margin: 2% auto;
+  padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -52,7 +45,7 @@ h1 {
 }
 
 #very-small-image {
-  max-height: 5vw;
+  max-height: 5vh;
 }
 
 #small-image {
@@ -70,7 +63,6 @@ li {
   list-style: none;
 }
 .all-of-them {
-  /* margin-top: 5vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,7 +83,7 @@ li {
   align-items: center;
   flex: 1 0 0;
   border-radius: 10.6px;
-  min-height: 24vh;
+  min-height: 25vh;
   border: 1px solid #ddd;
   margin: 1rem;
   padding: 1rem;
@@ -108,7 +100,6 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   margin: 0 20vw 0 20vw;
   padding: 1rem;
 }
@@ -124,7 +115,7 @@ li {
     max-width: 40vw;
   }
   .single-article {
-    margin: 6vh auto;
+    margin: auto;
   }
   .article-list,
   .article-card {
@@ -133,6 +124,11 @@ li {
     width: 80%;
     align-items: center;
     min-height: auto;
+  }
+  .user-card {
+    width: 20vw;
+    margin: 2% auto;
+    padding: 10px;
   }
 }
 
@@ -147,6 +143,11 @@ li {
     width: 80%;
     align-items: center;
     min-height: auto;
+  }
+  .user-card {
+    width: 30vw;
+    margin: 2% auto;
+    padding: 10px;
   }
 }
 

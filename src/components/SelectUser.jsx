@@ -34,6 +34,7 @@ export default function SelectUser() {
             <li className="user-card" key={username}>
               <div onClick={() => setCurrentUser({ username, name })}>
                 <img id="very-small-image" src={avatar_url} alt="" />
+                <br />
                 {username}
                 <br />
                 {name}
