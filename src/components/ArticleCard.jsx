@@ -1,7 +1,7 @@
 export default function ArticleCard({ img, author, title, topic, comments }) {
   return (
     <section>
-      <p>{title}</p>
+      <h4>{title}</h4>
 
       <img src={img} alt={`a photo of  ${title} `} id="small-image" />
 

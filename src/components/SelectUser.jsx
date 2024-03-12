@@ -31,11 +31,13 @@ export default function SelectUser() {
       <ul>
         {users.map(({ username, name, avatar_url }) => {
           return (
-            <li key={username}>
-              <p onClick={() => setCurrentUser({ username, name })}>
-                <img id="small-image" src={avatar_url} alt="" />
-                {username} {name}
-              </p>
+            <li className="user-card" key={username}>
+              <div onClick={() => setCurrentUser({ username, name })}>
+                <img id="very-small-image" src={avatar_url} alt="" />
+                {username}
+                <br />
+                {name}
+              </div>
             </li>
           );
         })}

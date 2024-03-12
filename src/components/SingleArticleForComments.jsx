@@ -38,7 +38,7 @@ export default function SingleArticleForComments({ setAllComments }) {
   if (loading) return <Loading />;
 
   return (
-    <>
+    <div className="single-article">
       <h2>{title}</h2>
       <img
         src={article_img_url}
@@ -62,6 +62,6 @@ export default function SingleArticleForComments({ setAllComments }) {
       by {author}
       <p>Votes: {votes + userLikes}</p>
       <AddComment article_id={article_id} setAllComments={setAllComments} />
-    </>
+    </div>
   );
 }
